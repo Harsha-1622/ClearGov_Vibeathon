@@ -1,5 +1,5 @@
 import React from 'react';
-import { Landmark, Scale, ShieldCheck, Award } from 'lucide-react';
+import { Landmark } from 'lucide-react';
 
 interface GovernmentSymbolProps {
   size?: 'sm' | 'md' | 'lg';
@@ -45,19 +45,16 @@ export const GovernmentSymbol: React.FC<GovernmentSymbolProps> = ({
           {/* Inner Circular Core */}
           <div className="w-full h-full rounded-full bg-[#0E2F60] flex flex-col items-center justify-center relative overflow-hidden border border-[#F59E0B]/40">
             {/* Tricolor Ribbon Motif */}
-            <div className="absolute top-1.5 flex gap-1">
+            <div className="absolute top-2 flex gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#059669]" />
             </div>
 
-            <Landmark className="w-8 h-8 text-[#FCD34D] mt-1 drop-shadow" />
+            <Landmark className="w-9 h-9 text-[#FCD34D] mt-1.5 drop-shadow" />
             
-            <div className="flex items-center gap-1.5 mt-0.5 text-[8px] font-black tracking-widest text-[#FDE68A] uppercase font-mono">
-              <Scale className="w-2.5 h-2.5 text-[#F59E0B]" />
-              <span>LEX</span>
-              <ShieldCheck className="w-2.5 h-2.5 text-[#10B981]" />
-            </div>
+            {/* National emblem circular rosette dot */}
+            <div className="w-2 h-2 rounded-full border border-[#FDE68A] bg-[#D97706]/80 mt-1 shadow-xs" />
           </div>
         </div>
 
