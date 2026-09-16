@@ -7,7 +7,7 @@ interface NextActionCardProps {
 }
 
 export const NextActionCard: React.FC<NextActionCardProps> = ({ onActionButtonClick }) => {
-  const { decisionExplanation, setCurrentRoute, decisionState } = useApp();
+  const { decisionExplanation, setCurrentRoute, decisionState, t } = useApp();
   const { nextBestAction } = decisionExplanation;
 
   const handleClick = () => {
@@ -35,23 +35,23 @@ export const NextActionCard: React.FC<NextActionCardProps> = ({ onActionButtonCl
           </div>
           <div>
             <span className="text-[11px] font-black uppercase tracking-wider text-[#123B7A] block">
-              Deterministic Guidance Engine
+              {t.nextActionEngine}
             </span>
             <h3 className="text-xl font-black text-slate-900 tracking-tight">
-              NEXT BEST ACTION
+              {t.nextActionHeading}
             </h3>
           </div>
         </div>
 
         <span className="text-xs font-bold text-[#03543F] bg-[#DEF7EC] px-3 py-1 rounded-full border border-[#31C48D]">
-          Rule-Based Direction
+          {t.nextActionDirection}
         </span>
       </div>
 
       {/* Main Recommended Action Highlight */}
       <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-slate-200/90 mb-6">
         <span className="text-xs font-black text-[#123B7A] uppercase tracking-wider block mb-1">
-          Target Action
+          {t.nextActionTarget}
         </span>
         <p className="text-lg font-black text-slate-900">
           {nextBestAction.action}
@@ -62,7 +62,7 @@ export const NextActionCard: React.FC<NextActionCardProps> = ({ onActionButtonCl
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-slate-200">
           <span className="text-xs font-black uppercase tracking-wider text-[#6366F1] block mb-1.5 flex items-center gap-1">
-            <span>WHY THIS IS REQUIRED</span>
+            <span>{t.nextActionWhy}</span>
           </span>
           <p className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
             {nextBestAction.why}
@@ -71,7 +71,7 @@ export const NextActionCard: React.FC<NextActionCardProps> = ({ onActionButtonCl
 
         <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-slate-200">
           <span className="text-xs font-black uppercase tracking-wider text-[#0E9F6E] block mb-1.5 flex items-center gap-1">
-            <span>WHAT HAPPENS NEXT</span>
+            <span>{t.nextActionHow}</span>
           </span>
           <p className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
             {nextBestAction.whatHappensNext}
@@ -83,7 +83,7 @@ export const NextActionCard: React.FC<NextActionCardProps> = ({ onActionButtonCl
       {nextBestAction.actionButtonText && (
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-xs text-slate-500 font-medium">
-            Take the recommended action to advance evaluation status:
+            {t.nextRecommendedStep}:
           </span>
           <button
             id="btn-resolve-evidence-issue"

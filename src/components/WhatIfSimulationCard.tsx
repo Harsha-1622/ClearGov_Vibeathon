@@ -3,7 +3,7 @@ import { Sparkles, ArrowRight, CheckCircle2, AlertTriangle, Upload, RefreshCw } 
 import { useApp } from '../context/AppContext';
 
 export const WhatIfSimulationCard: React.FC = () => {
-  const { decisionState, uploadSimulatedEvidence, resetCurrentScenario, establishedCount, totalCount } = useApp();
+  const { decisionState, uploadSimulatedEvidence, resetCurrentScenario, establishedCount, totalCount, t } = useApp();
 
   const isAlreadySufficient = decisionState === 'SUFFICIENT TO PROCEED';
 
@@ -26,24 +26,24 @@ export const WhatIfSimulationCard: React.FC = () => {
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] uppercase font-black tracking-wider text-[#A5F3FC]">
-                  Interactive Simulator
+                  {t.simBadge}
                 </span>
                 <span className="text-white/40">•</span>
-                <span className="text-[10px] text-white/70 font-mono">Deterministic State Projection</span>
+                <span className="text-[10px] text-white/70 font-mono">{t.simSubtitle}</span>
               </div>
               <h3 className="text-lg sm:text-xl font-black tracking-tight text-white">
-                What If I Upload Missing Evidence?
+                {t.simTitle}
               </h3>
             </div>
           </div>
 
           <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/10 text-[#A5F3FC] border border-white/20 self-start sm:self-auto backdrop-blur-md">
-            {isAlreadySufficient ? 'Simulation In Effect' : 'Interactive Sandbox'}
+            {isAlreadySufficient ? t.simActiveBadge : t.simSandboxBadge}
           </span>
         </div>
 
         <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl font-medium">
-          Simulate the exact deterministic outcome when the applicant provides the required Revenue Income Certificate. ClearGov dynamically recalculates rule satisfaction in real-time.
+          {t.simDesc}
         </p>
 
         {/* Before vs After Comparison Grid */}
@@ -51,7 +51,7 @@ export const WhatIfSimulationCard: React.FC = () => {
           {/* Current State */}
           <div className="bg-white/10 border border-white/15 rounded-2xl p-4.5 backdrop-blur-md">
             <span className="text-[10px] font-black uppercase tracking-wider text-[#A5F3FC] block mb-1">
-              Current Evaluation
+              {t.simCurrentEval}
             </span>
             <div className="flex items-baseline justify-between">
               <span className="text-2xl font-black text-white font-mono">
@@ -63,14 +63,14 @@ export const WhatIfSimulationCard: React.FC = () => {
               </span>
             </div>
             <p className="text-[11px] text-slate-300 mt-2 font-medium">
-              Family Income criteria cannot be established without an authorized revenue certificate.
+              {establishedCount < totalCount ? t.statusAdditionalEvidence : t.statusSufficient}
             </p>
           </div>
 
           {/* Simulated Projected State */}
           <div className="bg-[#0E9F6E]/20 border border-[#31C48D]/40 rounded-2xl p-4.5 backdrop-blur-md">
             <span className="text-[10px] font-black uppercase tracking-wider text-[#A7F3D0] block mb-1">
-              Projected State (With Certificate)
+              {t.simProjected}
             </span>
             <div className="flex items-baseline justify-between">
               <span className="text-2xl font-black text-white font-mono">
@@ -78,11 +78,11 @@ export const WhatIfSimulationCard: React.FC = () => {
               </span>
               <span className="text-[11px] font-bold text-emerald-300 flex items-center gap-1 bg-emerald-900/30 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                SUFFICIENT TO PROCEED
+                {t.statusSufficient}
               </span>
             </div>
             <p className="text-[11px] text-emerald-100 mt-2 font-medium">
-              All statutory conditions satisfied. Immediate 1-click transition to approval workflow.
+              {t.phase4DescReady}
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export const WhatIfSimulationCard: React.FC = () => {
         {/* Action Trigger */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-[11px] text-slate-300 font-medium">
-            Simulates instant cryptographic ingestion and deterministic re-evaluation:
+            {t.simDesc.slice(0, 70)}...
           </span>
 
           <div className="flex items-center gap-2.5 w-full sm:w-auto">
@@ -102,7 +102,7 @@ export const WhatIfSimulationCard: React.FC = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all cursor-pointer"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
-                <span>Reset Simulation</span>
+                <span>{t.simBtnRevert}</span>
               </button>
             ) : (
               <button
@@ -112,7 +112,7 @@ export const WhatIfSimulationCard: React.FC = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs font-black text-slate-900 bg-[#06B6D4] hover:bg-[#22D3EE] shadow-lg shadow-cyan-950/20 transition-all cursor-pointer hover:scale-[1.02]"
               >
                 <Upload className="w-4 h-4 text-slate-900" />
-                <span>Simulate Upload Now</span>
+                <span>{t.simBtnSimulate}</span>
                 <ArrowRight className="w-4 h-4 text-slate-900" />
               </button>
             )}

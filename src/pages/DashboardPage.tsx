@@ -86,7 +86,7 @@ export const DashboardPage: React.FC = () => {
         <div className="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-2 card-premium-hover">
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase tracking-wider text-slate-400">
-              Dossier Status
+              {t.caseDossier}
             </span>
             <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B] animate-pulse" />
           </div>
@@ -95,7 +95,7 @@ export const DashboardPage: React.FC = () => {
               {decisionState}
             </span>
             <span className="text-[11px] text-slate-500 font-medium block mt-0.5">
-              Deterministic rule state
+              {t.deterministicEngine}
             </span>
           </div>
         </div>
@@ -104,13 +104,13 @@ export const DashboardPage: React.FC = () => {
         <div className="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-2 card-premium-hover">
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase tracking-wider text-slate-400">
-              Readiness
+              {t.readinessIndex}
             </span>
             <span className="text-xs font-black text-[#123B7A]">{readinessPercent}%</span>
           </div>
           <div>
             <span className="text-xl font-black text-slate-900 block font-mono">
-              {establishedCount} / {totalCount} Requirements
+              {establishedCount} / {totalCount} {t.statutoryCriteria}
             </span>
             <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden mt-2">
               <div
@@ -125,16 +125,16 @@ export const DashboardPage: React.FC = () => {
         <div className="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-2 card-premium-hover">
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase tracking-wider text-slate-400">
-              Evidence Intake
+              {t.navEvidence}
             </span>
             <FileCheck className="w-4 h-4 text-[#0E9F6E]" />
           </div>
           <div>
             <span className="text-xl font-black text-slate-900 block font-mono">
-              {verifiedCount} Verified, {missingCount} Missing
+              {verifiedCount} {t.statusVerified}, {missingCount} {t.statusMissing}
             </span>
             <span className="text-[11px] text-slate-500 font-medium block mt-0.5">
-              Total {scenario.evidence.length} documentary artifacts
+              {t.evidenceQuality}
             </span>
           </div>
         </div>
@@ -146,16 +146,16 @@ export const DashboardPage: React.FC = () => {
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase tracking-wider text-[#123B7A]">
-              Recommended Step
+              {t.nextRecommendedStep}
             </span>
             <ArrowRight className="w-4 h-4 text-[#123B7A]" />
           </div>
           <div>
             <span className="text-sm font-black text-[#123B7A] line-clamp-1 block">
-              {missingCount > 0 ? 'Upload Missing Certificate' : 'Review Formal Determination'}
+              {missingCount > 0 ? t.btnUploadEvidence : t.btnViewDecision}
             </span>
             <span className="text-[11px] text-[#123B7A]/80 font-bold block mt-0.5">
-              Click to resolve gap →
+              {t.nextActionDirection} →
             </span>
           </div>
         </div>
@@ -166,14 +166,14 @@ export const DashboardPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
           <div>
             <h3 className="text-base font-black text-slate-900 tracking-tight">
-              Application Lifecycle Workflow
+              {t.lifecycleTitle}
             </h3>
             <p className="text-xs text-slate-500 font-medium">
-              End-to-end status progression from submission through human adjudication to disbursement
+              {t.lifecycleSubtitle}
             </p>
           </div>
           <span className="text-xs font-black text-[#123B7A] bg-[#E8EEF8] px-3 py-1 rounded-full border border-[#123B7A]/20 self-start sm:self-auto">
-            Active Phase: Verification & Rules
+            {t.lifecycleActivePhase}
           </span>
         </div>
 
@@ -186,8 +186,8 @@ export const DashboardPage: React.FC = () => {
               </span>
               <CheckCircle2 className="w-4 h-4 text-[#0E9F6E]" />
             </div>
-            <h4 className="text-xs font-black text-slate-900">Applicant Intake</h4>
-            <p className="text-[11px] text-slate-600 font-medium">Personal & academic details completed</p>
+            <h4 className="text-xs font-black text-slate-900">{t.phase1Title}</h4>
+            <p className="text-[11px] text-slate-600 font-medium">{t.phase1Desc}</p>
           </div>
 
           {/* Step 2: Evidence */}
@@ -198,8 +198,10 @@ export const DashboardPage: React.FC = () => {
               </span>
               <AlertTriangle className="w-4 h-4 text-[#D97706]" />
             </div>
-            <h4 className="text-xs font-black text-slate-900">Evidence Extraction</h4>
-            <p className="text-[11px] text-slate-600 font-medium">{establishedCount} of {totalCount} proofs established</p>
+            <h4 className="text-xs font-black text-slate-900">{t.phase2Title}</h4>
+            <p className="text-[11px] text-slate-600 font-medium">
+              {establishedCount}/{totalCount} {t.phase2Desc}
+            </p>
           </div>
 
           {/* Step 3: Assessment */}
@@ -210,8 +212,8 @@ export const DashboardPage: React.FC = () => {
               </span>
               <Activity className="w-4 h-4 text-[#123B7A]" />
             </div>
-            <h4 className="text-xs font-black text-slate-900">Rules Engine</h4>
-            <p className="text-[11px] text-slate-600 font-medium">Deterministic criteria evaluation active</p>
+            <h4 className="text-xs font-black text-slate-900">{t.phase3Title}</h4>
+            <p className="text-[11px] text-slate-600 font-medium">{t.phase3Desc}</p>
           </div>
 
           {/* Step 4: Decision */}
@@ -222,9 +224,9 @@ export const DashboardPage: React.FC = () => {
               </span>
               <Clock className="w-4 h-4 text-slate-400" />
             </div>
-            <h4 className="text-xs font-black text-slate-900">Final Determination</h4>
+            <h4 className="text-xs font-black text-slate-900">{t.phase4Title}</h4>
             <p className="text-[11px] text-slate-500 font-medium">
-              {decisionState === 'SUFFICIENT TO PROCEED' ? 'Ready for disbursement' : 'Awaiting evidence proofs'}
+              {decisionState === 'SUFFICIENT TO PROCEED' ? t.phase4DescReady : t.phase4DescAwaiting}
             </p>
           </div>
         </div>

@@ -2,5 +2,7 @@
   "name": "ClearGov — From Evidence to Decision",
   "description": "Civic-tech prototype for transparent, explainable application evidence assessment and decisions.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

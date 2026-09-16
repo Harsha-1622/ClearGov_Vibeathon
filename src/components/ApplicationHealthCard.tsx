@@ -3,7 +3,7 @@ import { Activity, ShieldCheck, CheckCircle2, Info } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export const ApplicationHealthCard: React.FC = () => {
-  const { scenario, establishedCount, totalCount, decisionState } = useApp();
+  const { scenario, establishedCount, totalCount, decisionState, t } = useApp();
 
   const health = React.useMemo(() => {
     const completeness = Math.round((establishedCount / totalCount) * 100);
@@ -38,16 +38,16 @@ export const ApplicationHealthCard: React.FC = () => {
           </div>
           <div>
             <h3 className="text-base font-black text-slate-900 tracking-tight">
-              Application Health Index
+              {t.healthTitle}
             </h3>
             <p className="text-xs text-slate-500">
-              Composite diagnostics on case completeness and review eligibility
+              {t.healthSubtitle}
             </p>
           </div>
         </div>
 
         <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 self-start sm:self-auto">
-          Health Status: Good
+          {t.healthGood}
         </span>
       </div>
 
@@ -55,7 +55,7 @@ export const ApplicationHealthCard: React.FC = () => {
         {/* 1. Completeness */}
         <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 space-y-1.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-700">Completeness</span>
+            <span className="font-bold text-slate-700">{t.healthCompleteness}</span>
             <span className="font-extrabold text-slate-900">{health.completeness}%</span>
           </div>
           <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -65,14 +65,14 @@ export const ApplicationHealthCard: React.FC = () => {
             />
           </div>
           <span className="text-[10px] text-slate-500 block">
-            {establishedCount} of {totalCount} mandatory items
+            {t.healthCompletenessDesc} ({establishedCount}/{totalCount})
           </span>
         </div>
 
         {/* 2. Evidence Quality */}
         <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 space-y-1.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-700">Evidence Quality</span>
+            <span className="font-bold text-slate-700">{t.healthQuality}</span>
             <span className="font-extrabold text-slate-900">{health.evidenceQuality}%</span>
           </div>
           <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -84,14 +84,14 @@ export const ApplicationHealthCard: React.FC = () => {
             />
           </div>
           <span className="text-[10px] text-slate-500 block">
-            Optical OCR & seal validation
+            {t.healthQualityDesc}
           </span>
         </div>
 
         {/* 3. Consistency */}
         <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 space-y-1.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-700">Consistency</span>
+            <span className="font-bold text-slate-700">{t.healthConsistency}</span>
             <span className="font-extrabold text-slate-900">{health.consistency}%</span>
           </div>
           <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -103,14 +103,14 @@ export const ApplicationHealthCard: React.FC = () => {
             />
           </div>
           <span className="text-[10px] text-slate-500 block">
-            Cross-document match certainty
+            {t.healthConsistencyDesc}
           </span>
         </div>
 
         {/* 4. Review Readiness */}
         <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/70 space-y-1.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-700">Review Readiness</span>
+            <span className="font-bold text-slate-700">{t.healthReadiness}</span>
             <span className="font-extrabold text-slate-900">{health.reviewReadiness}%</span>
           </div>
           <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
@@ -120,7 +120,7 @@ export const ApplicationHealthCard: React.FC = () => {
             />
           </div>
           <span className="text-[10px] text-slate-500 block">
-            Disbursement readiness index
+            {t.healthReadinessDesc}
           </span>
         </div>
       </div>
