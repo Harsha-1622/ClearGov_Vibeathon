@@ -1,3 +1,3 @@
 ClearGov – From Evidence to Decision is an AI-powered public-service application that analyzes a selected service and identifies the documents required to apply. It compares the required documents with the evidence provided by the applicant, detects missing or problematic documents, explains why each document is needed, and guides the applicant on the next steps. ClearGov aims to make government application processes simpler, more transparent, and easier to understand for citizens.
 And also aded Multi Language feature of Telugu,Hindhi,English 
-Because this website should also help farmers, illiterate people and for every citizen in India.
+**Because this website should also help farmers, illiterate people and for every citizen in India.**
